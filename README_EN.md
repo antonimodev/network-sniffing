@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    
+<p><a href="https://github.com/antonimodev/network-sniffing/blob/main/README.md"><strong>SPANISH VERSION 🇪🇸</strong></a></p>
 
 <h1>🌐Network Sniffer</h1>
 
@@ -26,7 +28,29 @@
 
 <p>To start using Wireshark, you can <a href="https://www.wireshark.org/download.html">download it here</a></p>
 
+
+## 📖 Index
+
+1. [Open Wireshark - Initial Menu and Network Interfaces.](#1---open-wireshark---initial-menu-and-network-interfaces)
+2. [Basic Interface - Buttons and Network Packets.](#2---basic-interface---buttons-and-network-packets)
+3. [Search Filter.](#3---search-filter)
+4. [Panel Organization.](#4---panel-organization)
+5. [Color Rules.](#5---color-rules)
+   
+    5.1 [Color Classification.](#51---color-classification)
+   
+6. [HTTP Web Login.](#6---http-web-login)
+7. [Protocol Filter.](#7---protocol-filter)
+    
+    7.1 [HTTP Session Tracking.](#71---http-session-tracking)
+   
+8. [Obtained Credentials.](#8---obtained-credentials)
+9. [Conclusion.](#9---conclusion)
+
+    
 <h2>🔎HTTP Packet Analysis and Capture with Wireshark</h2>
+
+### 1 - Open Wireshark - Initial Menu and Network Interfaces.
 
 Once Wireshark is downloaded into our work environment, we can open it to get familiar with the basic elements needed to complete the practice. We can start the program from the terminal with the command <code>wireshark</code> or by double-clicking the icon from the graphical interface. Upon opening it, we will see the main window of the program with a list of available network interfaces.
 
@@ -38,6 +62,10 @@ Once Wireshark is downloaded into our work environment, we can open it to get fa
 In our case, we are using a virtual machine (<em>VirtualBox</em>), and the network interface showing signal is <strong>eth0</strong>. The signal will vary depending on the network traffic occurring at that moment.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/0%20START%20WIRESHARK.png?raw=true" alt="Start Wireshark">
+
+<br>
+
+### 2 - Basic Interface - Buttons and Network Packets.
 
 Once we select the network interface we want to monitor, we will access the main panel, where we can observe various interface elements. It is essential to understand some basic concepts before diving into more details. In this context, it is important to know: What are network packets?
 
@@ -55,9 +83,17 @@ Next, you will find some basic functions in Wireshark:
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/1%20INIT%20ICONS.png?raw=true" alt="Wireshark Menu">
 
+<br>
+
+### 3 - Search Filter.
+
 In addition to the basic buttons, Wireshark allows filtering packets according to various criteria in the search filter bar. You can use filters for protocols, IP addresses, ports, MAC addresses, among others, depending on what you are looking for.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/2%20SEARCH%20FILTER.png?raw=true" alt="Filter">
+
+<br>
+
+### 4 - Panel Organization.
 
 Once familiar with the basic interface, we will press the button to start packet capture. Next, we will see the capture window, where Wireshark will start showing network packets in real-time, organized into three different panels:
 
@@ -71,13 +107,23 @@ This panel organization allows you to analyze each captured packet in detail and
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/3%20CAPTURED%20PACKETS.png?raw=true" alt="Packet info">
 
+<br>
+
+### 5 - Color Rules.
+
 It may appear differently to you, showing packets of different colors. These colors have a meaning that helps us classify each packet according to its parameters. To see what each packet corresponds to and familiarize ourselves visually, we can go to the section: <pre>View > Coloring Rules</pre>
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/4%20VIEW-COLORING%20RULES.png?raw=true" alt="View Coloring rules">
 
 In this section, you can see how the nature of the packets is classified according to their color. Although for this practice we will not delve too much into the coloring rules, it is useful to know them to maintain a certain level of organization in packet analysis.
 
+### 5.1 - Color Classification.
+
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/5%20COLORING%20RULES.png?raw=true" alt="Coloring rules">
+
+<br>
+
+### 6 - HTTP Web Login.
 
 For the current project, we are going to explore the security of HTTP network protocols. We will navigate to a web page that uses the "http" protocol and offers a login form. We will enter random credentials to observe how the data is transmitted. Nowadays, most websites use the HTTPS protocol, which encrypts the packets and makes it difficult to access their content.
 
@@ -94,6 +140,10 @@ In less technical words, we could say that an HTTP protocol dictates the rules t
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/6%20LOGIN%20PAGE.png?raw=true" alt="login page">
 
+<br>
+
+### 7 - Protocol Filter.
+
 Once we have identified the network protocols we are going to use, we can filter the packets by HTTP in the Wireshark search bar. This will allow us to focus solely on the packets containing information related to the login process on the HTTP domain.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/7%20HTTP%20PROTOCOL%20FILTERED.png?raw=true" alt="HTTP Protocol Filtered">
@@ -101,8 +151,13 @@ Once we have identified the network protocols we are going to use, we can filter
 Once the packet containing the login is located, we should do the following: <pre>Right click > Follow > HTTP Stream</pre>
 This action will allow us to see all the information for a specific HTTP session, facilitating the identification of problems and the review of data.
 
+### 7.1 - HTTP Session Tracking.
+
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/8%20FOLLOWING%20HTTP%20STREAM.png?raw=true" alt="HTTP STREAM">
 
+<br>
+
+### 8 - Obtained Credentials.
 A window will open with all the information of the HTTP session. Here, we can observe the client's (ours) and the server's responses, differentiated by colors:
 
 - Client: Red 🔴
@@ -112,7 +167,10 @@ Eureka! We have captured the credentials, in this case, the username is <strong>
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20English%20Screenshots%20Github/9%20EUREKA!.png?raw=true" alt="Credentials">
 
-<h2>📖Conclusion</h2>
+<br>
+
+### 9 - Conclusion.
+
 <p>In this practice with Wireshark, I learned how to use this tool to capture and analyze network traffic, with a specific focus on the HTTP protocol. I also explored different types of protocols and further strengthened my understanding of network security. These steps allowed me to:</p>
 
 - <strong>Get familiar with Wireshark</strong>: I started the program, selected the appropriate network interface, and explored the basic interface, understanding its organization into panels for data visualization.
