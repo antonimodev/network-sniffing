@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<p><a href="https://github.com/antonimodev/network-sniffing/blob/main/README_EN.md"><strong>ENGLISH VERSION 🇬🇧</strong></a></p>
+
 <h1>🌐Network Sniffer</h1>
 
 <p>Los Sniffers, también conocidos como rastreadores de red, son herramientas empleadas para <strong><em>monitorizar, capturar y analizar en tiempo real los paquetes de datos que se transmiten en una red</em></strong>. Cuando los datos viajan a través de internet, se fragmentan en pequeños paquetes que pasan por diferentes nodos de la red, y los sniffers permiten interceptar y analizar estos paquetes.</p>
@@ -26,7 +28,27 @@
 
 <p>Para empezar a utilizar Wireshark, puedes <a href="https://www.wireshark.org/download.html">Descargarlo aquí</p>
 
-<h2>🔎Análisis y captura de paquetes HTTP con Wireshark</h2>
+## 📖Índice
+
+1. [Abrir Wireshark - Menú inicial e interfaces de red.](#1---abrir-wireshark---menú-inicial-e-interfaces-de-red)
+2. [Interfaz básica - Botones y paquetes de red.](#2---interfaz-básica---botones-y-paquetes-de-red)
+3. [Filtro de búsqueda.](#3---filtro-de-búsqueda)
+4. [Organización de paneles.](#4---organización-de-paneles)
+5. [Reglas de color.](#5---reglas-de-color)
+
+    5.1 [Clasificación de colores.](#51---clasificación-de-colores)
+   
+6. [Login en web HTTP.](#6---login-en-web-http)
+7. [Filtro por protocolo.](#7---filtro-por-protocolo)
+   
+    7.1 [Seguimiento de sesión HTTP.](#71---seguimiento-de-sesión-http)
+
+8. [Credenciales obtenidas.](#8---credenciales-obtenidas)
+9. [Conclusión.](#9---conclusión)
+
+## 🔎Análisis y captura de paquetes HTTP con Wireshark
+
+### 1 - Abrir Wireshark - Menú Inicial e interfaces de red.
 
 Una vez descargado Wireshark en nuestro entorno de trabajo, podremos abrirlo para familiarizarnos con los elementos básicos necesarios para completar la práctica. Podemos iniciar el programa desde la terminal con el comando <code>wireshark</code> o haciendo doble clic en el icono desde la interfaz gráfica. Al abrirlo, veremos la ventana principal del programa con una lista de las interfaces de red disponibles.
 
@@ -39,11 +61,15 @@ En nuestro caso, estamos utilizando una máquina virtual (<em>VirtualBox</em>), 
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/0%20START%20WIRESHARK.png" alt="Start Wireshark">
 
+<br>
+
+### 2 - Interfaz básica - Botones y paquetes de red.
+
 Una vez que seleccionemos la interfaz de red que queremos monitorizar, accederemos al panel principal, donde podremos observar diversos elementos de la interfaz. Es fundamental entender algunos conceptos básicos antes de profundizar en más detalles. En este contexto, es importante saber: ¿Qué son los paquetes de red?
 
 <dl>
     <dt>Paquetes de red</dt>
-    <dd><em>Son unidades de datos que se envían a través de una red. Cada paquete contiene información sobre su origen, destino y otras instrucciones para asegurar que la información llegue correctamente a su destino.</em></dd>
+    <dd><em>Son unidades de datos que se envían a través de una red. Cada paquete contiene información sobre su origen, destino y otras instrucciones para asegurar que la información llegue correctamente.</em></dd>
 </dl>
 
 A continuación, encontrarás algunas funciones básicas en Wireshark:
@@ -55,10 +81,17 @@ A continuación, encontrarás algunas funciones básicas en Wireshark:
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/1%20INIT%20ICONS.png?raw=true" alt="Wireshark Menu">
 
+<br>
+
+### 3 - Filtro de búsqueda.
+
 Además de los botones básicos, Wireshark permite filtrar paquetes según diversos criterios en la barra de filtro de búsqueda. Puedes usar filtros para protocolos, direcciones IP, puertos, direcciones MAC, entre otros, dependiendo de lo que estés buscando.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/2%20SEARCH%20FILTER.png?raw=true" alt="Filter">
 
+<br>
+
+### 4 - Organización de paneles.
 Una vez familiarizados con la interfaz básica, presionaremos el botón para iniciar la captura de paquetes. A continuación, veremos la ventana de captura, donde Wireshark comenzará a mostrar los paquetes de red en tiempo real, organizados en tres paneles distintos:
 
 <ul>
@@ -71,15 +104,25 @@ Esta organización en paneles te permite analizar en detalle cada paquete captur
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/3%20CAPTURED%20PACKETS.png?raw=true" alt="Packet info">
 
-Puede que en lugar de aparecerte como a mí, te aparezcan paquetes de diferentes colores, estos colores tienen un significado que nos ayuda a clasificar cada paquete según diferentes parámetros. Para poder ver a qué corresponde cada paquete y familiarizarnos visualmente podemos ir al apartado: <pre>View > Coloring Rules</pre>
+<br>
+
+### 5 - Reglas de color.
+
+Puede que en lugar de aparecerte como a mí, te aparezcan paquetes de colores distintos, estos colores tienen un significado que nos ayuda a clasificar cada paquete según sus parámetros. Para poder ver a qué corresponde cada paquete y familiarizarnos visualmente podemos ir al apartado: <pre>View > Coloring Rules</pre>
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/4%20VIEW-COLORING%20RULES.png?raw=true" alt="View Coloring rules">
+
+### 5.1 - Clasificación de colores.
 
 En esta sección, podrás ver cómo se clasifica la naturaleza de los paquetes según su color. Aunque para esta práctica no profundizaremos demasiado en las reglas de color, es útil conocerlas para mantener cierto nivel de organización en el análisis de paquetes.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/5%20COLORING%20RULES.png?raw=true" alt="Coloring rules">
 
-Para el proyecto actual, vamos a explorar la seguridad de los protocolos de red HTTP. Navegaremos a una página web que use el protocolo "http" y que ofrezca un formulario de inicio de sesión. Introduciremos credenciales aleatorias para observar cómo se transmiten los datos. En la actualidad, la mayoría de los sitios web utilizan el protocolo HTTPS, que cifra los paquetes y dificulta su acceso.
+<br>
+
+### 6 - Login en web HTTP.
+
+Para el proyecto actual, vamos a explorar la seguridad de los protocolos de red HTTP. Navegaremos a una página web que use el protocolo "http" y que ofrezca un formulario de inicio de sesión. Introduciremos credenciales aleatorias para observar cómo se transmiten los datos. En la actualidad, la mayoría de los sitios web utilizan el protocolo HTTPS, que cifra los paquetes y dificulta el acceso a su contenido.
 
 <dl>
     <dt>Protocolo de red</dt>
@@ -94,14 +137,24 @@ En palabras menos técnicas, podríamos decir que un protocolo HTTP dicta las re
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/6%20LOGIN%20PAGE.png?raw=true" alt="login page">
 
+<br>
+
+### 7 - Filtro por protocolo.
+
 Una vez que hemos identificado los protocolos de red que vamos a utilizar, podemos filtrar los paquetes por HTTP en la barra de búsqueda de Wireshark. Esto nos permitirá centrarnos únicamente en los paquetes que contienen información relacionada con el proceso de inicio de sesión en el dominio HTTP.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/7%20HTTP%20PROTOCOL%20FILTERED.png?raw=true" alt="HTTP Protocol Filtered">
+
+### 7.1 - Seguimiento de sesión HTTP.
 
 Una vez localizado el paquete que contiene el login, deberemos hacer lo siguiente: <pre>Click derecho > Follow > HTTP Stream</pre>
 Esta acción nos permitirá ver toda la información para una sesión HTTP específica, facilitando la identificación de problemas y la revisión de los datos.
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/8%20FOLLOWING%20HTTP%20STREAM.png?raw=true" alt="HTTP STREAM">
+
+<br>
+
+### 8 - Credenciales obtenidas.
 
 Se abrirá una ventana con toda la información de la sesión HTTP. Aquí, podremos observar las respuestas del cliente (nosotros) y del servidor, diferenciadas por colores:
 
@@ -112,7 +165,9 @@ Se abrirá una ventana con toda la información de la sesión HTTP. Aquí, podre
 
 <img src="https://github.com/antonimodev/network-sniffing/blob/main/Wireshark%20-%20Capturas%20Castellano%20Github/9%20EUREKA!.png?raw=true" alt="Credentials">
 
-<h2>📖Conclusión</h2>
+<br>
+
+### 9 - Conclusión
 <p>En esta práctica con Wireshark, he aprendido a utilizar esta herramienta para capturar y analizar el tráfico de red, con un enfoque específico en el protocolo HTTP. Además he podido curiosear sobre diferentes tipos de protocolos y afianzar aún más la concepción sobre la seguridad en redes. Estos pasos me han permitido:</p>
 
 - <strong>Familiarizarme con Wireshark</strong>: He iniciado el programa, seleccionado la interfaz de red adecuada y explorado la interfaz básica, comprendiendo su organización en paneles para la visualización de datos.
